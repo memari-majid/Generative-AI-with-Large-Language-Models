@@ -1,29 +1,28 @@
-Chapter 2: Prompt Engineering and In-Context Learning - Detailed Summary
-In this chapter, you are introduced to low-code methods for interacting with generative AI models, specifically through prompt engineering and in-context learning. These techniques enable users to optimize model responses by crafting prompts and providing relevant context. Writing effective prompts is described as both an art and a science, requiring iteration to guide the model toward producing more accurate and applicable responses.
+Chapter 3: Large-Language Foundation Models
+In this chapter, you learned about the training process of large-language foundation models, focusing on the pretraining phase. Pretraining a multibillion-parameter model from scratch is a compute-intensive task, requiring millions of GPU hours and trillions of tokens. While it is uncommon to train a foundation model from scratch, understanding the effort and resources required helps in appreciating the complexity of these models.
 
-Prompt Engineering
-Generative AI models accept prompts as input, which typically include instructions or context that define a task. For instance, a prompt could instruct the model to “summarize the following text” or answer factual questions like “Who won the 2016 baseball World Series?”. The model generates a completion based on the prompt, which can vary in content type, such as text, image, video, or audio. The goal of prompt engineering is to create prompts that elicit the most useful completions from the model.
+Pretrained Models and Model Hubs
+At the start of any generative AI project, it is advisable to use publicly available pretrained models rather than training from scratch. Model hubs such as Hugging Face Model HubLinks to an external site., PyTorch Hub, and Amazon SageMaker JumpStart offer access to various pretrained models along with their model cards. Model cards contain key information such as training details, context window size, and known limitations, enabling developers to choose the right model for their use case.
 
-A key point in the chapter is that prompts are not processed as raw text. Instead, they are tokenized into fragments called tokens, which are the basic units that the model uses for computations. Tokenization allows the model to handle sequences of text in a compact form, with vocabularies often consisting of thousands of tokens. This token-based processing is fundamental to how models interpret and generate language.
+Tokenizers and Embedding Vectors
+Generative AI models use tokenizers to convert human-readable text into tokenized representations (input_ids) that the model can process. These tokens are mapped to embedding vectors, high-dimensional numerical representations that capture the meaning and context of tokens. Embedding vectors are critical for representing language in a way that models can understand, and they are learned during the pretraining phase.
 
-In-Context Learning
-Another major concept covered in this chapter is in-context learning. This technique involves passing multiple prompt-completion pairs along with your input prompt, thereby providing examples for the model to learn from during that specific interaction. By offering these pairs as context, the model is nudged to generate responses that follow the patterns of the examples provided. This is a powerful feature of generative models, as it allows them to temporarily adjust their behavior without any changes to their underlying parameters.
+Transformer Architecture
+The Transformer architecture is the backbone of most modern generative AI models. Transformers rely on self-attention mechanisms to learn the contextual relationships between tokens. The architecture includes components such as the encoder, self-attention layers, and the softmax output layer, which helps the model generate the next token based on probability distributions. Transformers can vary in architecture, with three common types:
 
-In-context learning can be done in zero-shot, one-shot, or few-shot modes, depending on the number of example pairs provided. In zero-shot mode, no examples are given, and the model relies on its pre-existing knowledge to answer a prompt. In one-shot and few-shot modes, one or more example prompt-completion pairs are provided, helping the model generate responses more aligned with the examples.
+Encoder-only models: These models use bidirectional representations and are suited for tasks like text classification (e.g., BERT).
+Decoder-only models: These models use autoregressive techniques to generate text (e.g., GPT, LLaMA models).
+Encoder-decoder models: These sequence-to-sequence models are used for tasks like translation and summarization (e.g., T5, FLAN-T5).
+Scaling Laws and Compute-Optimal Models
+Empirical scaling laws describe the relationship between model size, dataset size, and compute budget. These laws, as discussed in the Chinchilla paperLinks to an external site., suggest that by increasing the dataset size relative to the model parameters, models can achieve state-of-the-art performance without needing extremely large parameter sizes. For example, the LLaMA-2 model outperformed larger models like GPT-3 due to its optimized dataset-to-parameter ratio.
 
-Configurable Parameters
-The chapter also introduces common configurable parameters that control the creativity of a model’s response. These parameters allow for fine-tuning of the model's output:
+Pretraining Datasets
+Popular datasets used for pretraining foundation models include WikipediaLinks to an external site., Common CrawlLinks to an external site., The PileLinks to an external site., and C4. These datasets provide large-scale text data for training language models. Some models also incorporate proprietary data to fine-tune the pretraining process for specific domains, as seen with BloombergGPT.
 
-Temperature: Controls the randomness of the response. A higher temperature results in more creative and diverse responses, while a lower temperature generates more focused and deterministic completions.
-Top-k: Limits the model’s choice to the top k tokens with the highest probabilities. A smaller k value makes the model less creative by restricting its options to fewer tokens.
-Top-p: Also known as nucleus sampling, this parameter restricts token selection to those whose cumulative probability adds up to a value p. It allows for more variability in responses without selecting improbable tokens.
-Best Practices in Prompt Engineering
-The chapter concludes by sharing several best practices for crafting effective prompts:
-
-Be clear and concise: Avoid ambiguity in your prompts, as unclear instructions may confuse the model and result in suboptimal responses.
-Provide context: Including relevant information helps the model understand the task or topic better, leading to more accurate responses.
-Explicit instructions: Specify any desired output format clearly in your prompt to ensure that the model generates the correct type of response.
-Avoid negative formulations: Use straightforward, positive language when defining tasks, as this minimizes confusion in the model’s interpretation.
-Use few-shot examples: When appropriate, include example prompt-completion pairs to guide the model’s behavior. This technique improves the coherence and relevance of the generated responses.
-Step-by-step reasoning: For complex tasks, ask the model to “think step-by-step” to ensure it follows a logical process when generating a response.
-Overall, prompt engineering is a learned skill that requires experimentation, and in-context learning provides a useful mechanism for guiding model behavior. With practice, you can master these techniques to better interact with generative AI models, making them more effective in real-world tasks.
+Key References
+Jordan Hoffmann et al., "Training Compute-Optimal Large Language Models"Links to an external site., arXiv, 2022.
+Shijie Wu et al., "BloombergGPT: A Large Language Model for Finance"Links to an external site., arXiv, 2023.
+Hugo Touvron et al., "Llama 2: Open Foundation and Fine-Tuned Chat Models"Links to an external site., arXiv, 2023.
+Mandy Guo et al., "Wiki-40B: Multilingual Language Model Dataset"Links to an external site., arXiv, 2020.
+Leo Gao et al., "The Pile: An 800GB Dataset of Diverse Text for Language Modeling"Links to an external site., arXiv, 2020.
+In conclusion, this chapter provided a deeper understanding of how foundation models are trained, the importance of scaling laws, and the role of pretrained models in generative AI projects. These concepts serve as a foundation for building and optimizing AI systems using large-language models.
