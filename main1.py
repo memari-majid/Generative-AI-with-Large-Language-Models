@@ -114,7 +114,7 @@ def load_files_in_batches(directory_path: str, batch_size: int) -> Iterator[List
     Only processes .py and .ipynb files, extracts Python code, and includes chapter metadata.
     Also processes README.md files to extract key concepts.
     """
-    allowed_extensions = ['.py', '.ipynb']
+    allowed_extensions = ['.py']
     readme_filename = 'README.md'
 
     documents = []
