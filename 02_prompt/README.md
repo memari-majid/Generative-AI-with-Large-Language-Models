@@ -11,11 +11,11 @@ This chapter focuses on **prompt engineering** and **in-context learning** for g
 
 **Chain-of-Thought (CoT) Prompting:** An advanced technique where prompts are crafted to encourage the model to break down complex tasks step-by-step, leading to more accurate results for multi-step problems.
 
-**Generative Parameters:** The modelâs response quality and randomness can be controlled by adjusting parameters such as temperature, top-k, and top-p, which are important for balancing coherence and creativity.
+**Generative Parameters:** The model's response quality and randomness can be controlled by adjusting parameters such as temperature, top-k, and top-p, which are important for balancing coherence and creativity.
 
 ## Code Example 1: LLaMA 3.2 for Text Generation
 
-This example demonstrates how to use the LLaMA 3.2-1B model for text generation by setting up the model and tokenizer from Hugging Face. It showcases the importance of generation configurations like `max_new_tokens`, `temperature`, and `top_p` in controlling the quality and diversity of the modelâs output.
+This example demonstrates how to use the LLaMA 3.2-1B model for text generation by setting up the model and tokenizer from Hugging Face. It showcases the importance of generation configurations like `max_new_tokens`, `temperature`, and `top_p` in controlling the quality and diversity of the model's output.
 
 ```python
 # Example of a prompt:
