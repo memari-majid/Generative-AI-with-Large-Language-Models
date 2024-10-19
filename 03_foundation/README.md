@@ -40,4 +40,3 @@ This script showcases the pre-training of GPT-2 using the CodeParrot dataset fro
 - **Code Generation**: The model is fine-tuned to generate Python code snippets.
 
 Each file contains its own set of hyperparameters for controlling generation behavior, which includes parameters like `max_new_tokens`, `temperature`, and `beam search`. The scripts make extensive use of AWS services for deployment and training, with special handling for model inference via SageMaker.
-"""
