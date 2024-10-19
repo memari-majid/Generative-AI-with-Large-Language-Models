@@ -1,20 +1,90 @@
-Chapter 5: Fine-Tuning and Evaluation
-This chapter delves into fine-tuning large generative models using a method called instruction fine-tuning. While pretraining models with massive datasets is necessary, fine-tuning helps adapt these models to custom datasets and tasks. Instruction fine-tuning involves providing specific commands, such as "Summarize this text" or "Generate a marketing email," to adjust the model for varied use cases. Fine-tuning helps maintain the model’s general-purpose capabilities across many tasks.
+### 1. `01_fine_tune_dolly_llama2_huggingface.py`
+This script is aimed at refining the LLaMA 2 model on the Hugging Face platform, targeting specific applications such as text generation or question-answering.
 
-Instruction Fine-Tuning
-Instruction fine-tuning refines a model's behavior to handle domain-specific tasks. Models like Llama 2-Chat, Falcon-Chat, and FLAN-T5 have been fine-tuned with instructions to perform humanlike reasoning and handle diverse requests. Fine-tuning with instruction datasets ensures the model’s ability to generalize and perform multiple tasks simultaneously, preventing "catastrophic forgetting" of other tasks.
+#### Key Concepts:
+- **Fine-tuning**: Refines a pre-trained model to enhance its performance on specific tasks.
+- **Hugging Face Integration**: Exploits the extensive Hugging Face ecosystem for model enhancement and management.
 
-Instruction Datasets
-To fine-tune models effectively, a multitask instruction dataset should include varied tasks (e.g., summarization, classification). Fine-tuning with a small dataset of 500-1,000 examples can still yield excellent results. Models like FLAN-T5 have been fine-tuned on extensive multitask instruction datasets, significantly improving their performance across many different tasks.
+### 2. `02_fine_tune_dolly_llama2_sagemaker_cluster.py`
+This script extends the functionalities of the first, modified for execution on AWS SageMaker, and utilizes cluster management for efficient handling of extensive training operations.
 
-Building Custom Instruction Datasets
-By applying prompt templates to tabular datasets (such as conversational data), custom datasets can be transformed into instruction datasets for fine-tuning. This process involves creating multiple instruction formats for each example, increasing the model’s exposure to different prompts and improving generalization.
+#### Key Concepts:
+- **SageMaker Clusters**: Employs AWS’s robust services to facilitate the deployment and scaling of model training.
+- **Distributed Training**: Executes training over multiple instances to manage large datasets or sophisticated model architectures efficiently.
 
-Fine-Tuning Process
-Fine-tuning involves training the model by comparing generated output with ground truth labels (e.g., human-written summaries), using backpropagation to adjust model parameters. Tools like Amazon SageMaker and Hugging Face’s Transformers library allow for efficient fine-tuning using models hosted on AWS infrastructure.
+### 3. `03_fine_tune_dolly_llama2_sagemaker_jumpstart.py`
+This script incorporates LLaMA 2 with SageMaker JumpStart to streamline the deployment of ready-made machine learning solutions.
 
-Evaluation
-Evaluating a model’s performance after fine-tuning can be done using metrics such as ROUGE for summarization or BLEU for translation. Community benchmarks, including MMLU and HELM, offer a way to test models across various tasks, including detecting bias and harmful output.
+#### Key Concepts:
+- **JumpStart Integration**: Utilizes pre-set training environments for quick deployment and refinement.
+- **Ease of Use**: Offers an intuitive interface for managing training settings and deploying models.
 
-Conclusion
-Fine-tuning with instructions improves a model’s ability to handle custom tasks, and various evaluation metrics help measure its effectiveness. In the next chapter, parameter-efficient fine-tuning (PEFT) will be discussed to optimize the fine-tuning process by reducing the number of updated parameters.
+### 4. `04_continued_pretraining_dolly_llama2_sagemaker_jumpstart.py`
+This script focuses on the ongoing pre-training of the LLaMA 2 model, promoting further personalization and enhancing the model’s effectiveness for particular tasks or sectors.
+
+#### Key Concepts:
+- **Continued Pre-training**: Further develops the model by continuing the training process beyond its initial pre-trained state.
+- **Domain Specificity**: Tailors the model more precisely to the needs of specific industries or data types.
+
+### 5. `05_prepare_dialogsum_prompt_dataset_huggingface.py`
+This script is designed to set up datasets for training models on dialogue summarization tasks, specifically formatted for the Hugging Face platform.
+
+#### Key Concepts:
+- **Data Preparation**: Structures and formats data appropriately for dialogue summarization.
+- **Prompt Engineering**: Designs prompts that direct the model's training towards specific summarization tasks.
+
+### 6. `06_fine_tune_dialogsum_flan_t5_huggingface.py`
+Refines the FLAN-T5 model on dialogue summarization tasks using the Hugging Face platform, applying the dataset prepared in the previous script.
+
+#### Key Concepts:
+- **FLAN-T5**: Targets a variant of T5, pre-trained in a task-neutral manner using instructional prompts.
+- **Dialogue Summarization**: Specializes the model to efficiently generate conversation summaries.
+
+### 7. `07_prepare_dialogsum_prompt_dataset_sagemaker_cluster.py`
+Adapts the fifth script’s processes for AWS SageMaker’s environment, preparing datasets for dialogue summarization.
+
+#### Key Concepts:
+- **SageMaker Dataset Preparation**: Assures data compatibility with AWS’s storage and processing capabilities.
+- **Scalable Data Processing**: Exploits AWS resources to manage large datasets effectively.
+
+### 8. `08_fine_tune_dialogsum_flan_t5_sagemaker_cluster.py`
+Enhances the dialogue summarization model using SageMaker, utilizing clusters for efficient resource management and scalability.
+
+#### Key Concepts:
+- **Cluster Management**: Harnesses AWS’s facilities for overseeing large-scale training operations.
+- **Efficient Fine-Tuning**: Guarantees the model is optimally adjusted for the summarization tasks.
+
+### 9. `09_fine_tune_dialogsum_flan_t5_sagemaker_pipeline.py`
+Implements a structured training regimen for the FLAN-T5 model on SageMaker, emphasizing streamlined processes and automation.
+
+#### Key Concepts:
+- **Training Pipelines**: Automates all stages of model training, from data setup to evaluation.
+- **Workflow Optimization**: Simplifies the training procedure to minimize both time and resource use.
+
+### 10. `10_approve_and_deploy_fine_tuned_flan_t5_sagemaker_endpoint.py`
+Manages the approval and deployment phases of the fine-tuned model as a SageMaker endpoint, readying it for operational use.
+
+#### Key Concepts:
+- **Model Deployment**: Readies and launches the trained model as a SageMaker endpoint.
+- **Production Readiness**: Ensures the model satisfies performance benchmarks and is prepared for real-world deployment.
+
+### 11. `11_test_inference_flan_t5_sagemaker_endpoint.py`
+Tests the inferencing capabilities of the FLAN-T5 model deployed on a SageMaker endpoint to assess its response accuracy and speed.
+
+#### Key Concepts:
+- **Inference Testing**: Evaluates the operational performance of the deployed model.
+- **SageMaker Endpoint**: Uses AWS SageMaker to host and test the model deployment.
+
+### 12. `12_fine_tune_squad_falcon_sagemaker_jumpstart.py`
+Centers on refining the Falcon model for question-answering tasks utilizing the SQuAD dataset through the SageMaker JumpStart for efficient initiation and execution.
+
+#### Key Concepts:
+- **Fine-Tuning for QA**: Optimizes the Falcon model to excel in question answering.
+- **SageMaker JumpStart**: Makes use of preset environments for rapid deployment and training.
+
+### 13. `13_fine_tune_dolly_mixtral_of_experts_huggingface.py`
+Assuming a typographical error in "mixture of experts," this script likely enhances a Dolly model employing a mixture of experts strategy on the Hugging Face platform.
+
+#### Key Concepts:
+- **Mixture of Experts**: Applies a specialized model architecture for managing various task types or data.
+- **Hugging Face Platform**: Leverages the collective, open-source environment of Hugging Face for model enhancement.
