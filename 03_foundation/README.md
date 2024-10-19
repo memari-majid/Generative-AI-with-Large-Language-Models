@@ -1,28 +1,43 @@
-Chapter 3: Large-Language Foundation Models
-In this chapter, you learned about the training process of large-language foundation models, focusing on the pretraining phase. Pretraining a multibillion-parameter model from scratch is a compute-intensive task, requiring millions of GPU hours and trillions of tokens. While it is uncommon to train a foundation model from scratch, understanding the effort and resources required helps in appreciating the complexity of these models.
+## 1. `README.md`
+The `README.md` provides an introduction to different model types like LLaMA 2, Falcon, and GPT2 and explains how to utilize these models through Amazon SageMaker JumpStart. It introduces essential concepts like `text-generation` and the parameters you can pass for model inference.
 
-Pretrained Models and Model Hubs
-At the start of any generative AI project, it is advisable to use publicly available pretrained models rather than training from scratch. Model hubs such as Hugging Face Model HubLinks to an external site., PyTorch Hub, and Amazon SageMaker JumpStart offer access to various pretrained models along with their model cards. Model cards contain key information such as training details, context window size, and known limitations, enabling developers to choose the right model for their use case.
+### Key Points from the `README.md`:
+- Describes parameters like `max_length`, `num_beams`, `temperature`, etc., which control the behavior of text generation.
+- Explains how to invoke SageMaker endpoints and provides information on how the model generates responses using beam search and other sampling techniques.
 
-Tokenizers and Embedding Vectors
-Generative AI models use tokenizers to convert human-readable text into tokenized representations (input_ids) that the model can process. These tokens are mapped to embedding vectors, high-dimensional numerical representations that capture the meaning and context of tokens. Embedding vectors are critical for representing language in a way that models can understand, and they are learned during the pretraining phase.
+## 2. `01_llama2_chatbot_sagemaker_jumpstart.py`
+This script demonstrates deploying the LLaMA 2 model for a chatbot application using SageMaker. It includes setting up a SageMaker model endpoint, invoking it, and generating text responses.
 
-Transformer Architecture
-The Transformer architecture is the backbone of most modern generative AI models. Transformers rely on self-attention mechanisms to learn the contextual relationships between tokens. The architecture includes components such as the encoder, self-attention layers, and the softmax output layer, which helps the model generate the next token based on probability distributions. Transformers can vary in architecture, with three common types:
+### Key Concepts:
+- **SageMaker Endpoint Deployment**: The script shows how to deploy a chatbot with LLaMA 2 using AWS SageMaker, which serves as the model backend for inference.
+- **Text Generation**: Code snippets include sending a sample input prompt to the model and processing the generated text.
 
-Encoder-only models: These models use bidirectional representations and are suited for tasks like text classification (e.g., BERT).
-Decoder-only models: These models use autoregressive techniques to generate text (e.g., GPT, LLaMA models).
-Encoder-decoder models: These sequence-to-sequence models are used for tasks like translation and summarization (e.g., T5, FLAN-T5).
-Scaling Laws and Compute-Optimal Models
-Empirical scaling laws describe the relationship between model size, dataset size, and compute budget. These laws, as discussed in the Chinchilla paperLinks to an external site., suggest that by increasing the dataset size relative to the model parameters, models can achieve state-of-the-art performance without needing extremely large parameter sizes. For example, the LLaMA-2 model outperformed larger models like GPT-3 due to its optimized dataset-to-parameter ratio.
+## 3. `02_llama2_assistant_sagemaker_jumpstart.py`
+Similar to the first script, this one focuses on creating a more advanced assistant-like chatbot using LLaMA 2 on SageMaker. The assistant can handle complex queries and generate more informative responses.
 
-Pretraining Datasets
-Popular datasets used for pretraining foundation models include WikipediaLinks to an external site., Common CrawlLinks to an external site., The PileLinks to an external site., and C4. These datasets provide large-scale text data for training language models. Some models also incorporate proprietary data to fine-tune the pretraining process for specific domains, as seen with BloombergGPT.
+### Key Concepts:
+- **Enhanced Inference**: It goes beyond simple chatbot capabilities by implementing features like beam search, increasing `max_length`, and improving response generation.
 
-Key References
-Jordan Hoffmann et al., "Training Compute-Optimal Large Language Models"Links to an external site., arXiv, 2022.
-Shijie Wu et al., "BloombergGPT: A Large Language Model for Finance"Links to an external site., arXiv, 2023.
-Hugo Touvron et al., "Llama 2: Open Foundation and Fine-Tuned Chat Models"Links to an external site., arXiv, 2023.
-Mandy Guo et al., "Wiki-40B: Multilingual Language Model Dataset"Links to an external site., arXiv, 2020.
-Leo Gao et al., "The Pile: An 800GB Dataset of Diverse Text for Language Modeling"Links to an external site., arXiv, 2020.
-In conclusion, this chapter provided a deeper understanding of how foundation models are trained, the importance of scaling laws, and the role of pretrained models in generative AI projects. These concepts serve as a foundation for building and optimizing AI systems using large-language models.
+## 4. `03_falcon_chatbot_sagemaker_jumpstart.py`
+This file illustrates deploying the Falcon model for chatbot purposes using SageMaker. The Falcon model is another generative AI model, designed to generate human-like text.
+
+### Key Concepts:
+- **Falcon Model**: Focuses on deploying Falcon as a chatbot and interacting with it via SageMaker.
+- **Inference Parameters**: Similar to LLaMA 2 but adjusted for the Falcon model to fine-tune response generation.
+
+## 5. `04_falcon_chain_of_thought_sagemaker_jumpstart.py`
+This file extends the Falcon model with Chain of Thought (CoT) prompting techniques, where the model generates a more logical and step-by-step response.
+
+### Key Concepts:
+- **Chain of Thought (CoT)**: This helps in generating more structured, reasoning-based answers.
+- **Model Interaction**: It builds on top of the Falcon chatbot by adding structured logic in the model's text generation.
+
+## 6. `05_gpt2_codeparrot_pretrain_from_scratch.py`
+This script showcases the pre-training of GPT-2 using the CodeParrot dataset from scratch. The CodeParrot dataset contains code snippets, and the training focuses on creating a model specialized in code generation.
+
+### Key Concepts:
+- **Pre-training from Scratch**: Training the model on a large dataset using HuggingFace’s `Trainer` and handling the dataset using tokenizers.
+- **Code Generation**: The model is fine-tuned to generate Python code snippets.
+
+Each file contains its own set of hyperparameters for controlling generation behavior, which includes parameters like `max_new_tokens`, `temperature`, and `beam search`. The scripts make extensive use of AWS services for deployment and training, with special handling for model inference via SageMaker.
+"""
