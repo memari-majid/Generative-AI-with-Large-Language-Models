@@ -1,5 +1,5 @@
 
-# Chapter Overview: Prompt Engineering and In-Context Learning
+# Chapter 2: Prompt Engineering and In-Context Learning
 
 This chapter focuses on **prompt engineering** and **in-context learning** for generative AI models, which are essential for effectively interacting with models like LLaMA, Code Llama, and FLAN-T5. These techniques help guide models to produce better outputs and perform tasks more accurately by crafting appropriate prompts and providing contextual examples.
 
