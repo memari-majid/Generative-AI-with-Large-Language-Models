@@ -120,4 +120,4 @@ The application will:
 - **Licensing**: Ensure compliance with the licensing terms of Code Llama when using the model.
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
