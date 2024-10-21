@@ -50,12 +50,12 @@ To set up the project:
 
 1. **Clone the Repository**:
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/memari-majid/generative-ai-on-aws.git
    ```
 
 2. **Navigate to the Project Directory**:
    ```bash
-   cd <project_directory>
+   cd generative-ai-on-aws
    ```
 
 3. **Create a Virtual Environment (Optional but Recommended)**:
