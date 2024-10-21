@@ -121,13 +121,3 @@ The application will:
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for more details.
-
-## Related Resources
-- Book: [Generative AI on AWS](https://www.amazon.com/Generative-AI-AWS-Multimodal-Applications/dp/1098159225/) by O'Reilly Media
-- Authors:
-  - [Chris Fregly](https://www.linkedin.com/in/cfregly/)
-  - [Antje Barth](https://www.linkedin.com/in/antje-barth/)
-  - [Shelbee Eigenbrode](https://www.linkedin.com/in/shelbee-eigenbrode/)
-- YouTube Channel: https://youtube.generativeaionaws.com
-- Generative AI on AWS Meetup (Global, Virtual): https://meetup.generativeaionaws.com
-- [Data Science on AWS Book](https://www.amazon.com/Data-Science-AWS-End-End/dp/1492079391/)
