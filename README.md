@@ -121,3 +121,4 @@ The application will:
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for more details.
+Please contact mmemari@uvu.edu for more infor.
