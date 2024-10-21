@@ -108,7 +108,7 @@ The application will:
 
 - **File Loading and Preprocessing**: Python's `os.walk` is used to traverse directories and read files as text. Non-readable files are skipped, with appropriate warnings logged.
 - **Document Splitting**: LangChain's `RecursiveCharacterTextSplitter` splits documents into chunks of 1000 characters with a 100-character overlap.
-- **Embedding Generation**: Embeddings are created using Hugging Faceâs `sentence-transformers/all-MiniLM-L6-v2` model via `HuggingFaceEmbeddings`.
+- **Embedding Generation**: Embeddings are created using Hugging's `sentence-transformers/all-MiniLM-L6-v2` model via `HuggingFaceEmbeddings`.
 - **Vector Store**: The generated embeddings are stored in a FAISS vector store, allowing efficient similarity search for document retrieval.
 - **Code Llama Integration**: Code Llama is loaded using Hugging Face Transformers and integrated into the QA pipeline with LangChain'ss `HuggingFacePipeline`.
 - **Question Answering**: The system retrieves relevant documents from the vector store based on similarity and generates answers using the Code Llama model.
