@@ -1,5 +1,4 @@
-
-# CS339R: Generative AI with LLMs
+# Generative AI with LLMs on AWS
 
 This repository contains code examples originally created by the authors of the [Generative AI on AWS](https://www.amazon.com/Generative-AI-AWS-Multimodal-Applications/dp/1098159225/) textbook and updated by Majid Memari. The repository also includes a Streamlit web application that builds a knowledge base from course content, allowing students to interactively ask questions and receive answers using the Code Llama language model. Additionally, a virtual TA is integrated into the system, providing answers based on course materials and sample codes.
 
