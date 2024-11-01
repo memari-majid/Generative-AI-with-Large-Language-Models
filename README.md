@@ -1,11 +1,11 @@
-# Generative AI with Large Language Models using Cursor AI
+# Generative AI with Large Language Models
 
 This repository is an enhanced version of the code examples from the O'Reilly textbook [Generative AI on AWS](https://www.amazon.com/Generative-AI-AWS-Multimodal-Applications/dp/1098159225/) by Chris Fregly, Antje Barth, and Shelbee Eigenbrode (November 2023, ISBN: 9781098159221). The examples have been updated and optimized to work with Cursor AI, providing an interactive learning experience for working with Large Language Models (LLMs) on AWS.
 
 > **Note**: This repository is regularly updated to incorporate state-of-the-art AI developments and best practices, extending beyond the book's original content.
 
 ## Table of Contents
-- [Generative AI with Large Language Models using Cursor AI](#generative-ai-with-large-language-models-using-cursor-ai)
+- [Generative AI with Large Language Models](#generative-ai-with-large-language-models)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Repository Structure](#repository-structure)
