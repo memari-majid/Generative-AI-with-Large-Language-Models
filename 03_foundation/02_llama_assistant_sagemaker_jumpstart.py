@@ -41,9 +41,24 @@ model_id, model_version = "meta-textgeneration-llama-2-70b-f", "2.*"
 
 
 from sagemaker.jumpstart.model import JumpStartModel
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 model = JumpStartModel(model_id=model_id)
 predictor = model.deploy()
+
+# Load the model and tokenizer
+model_name = "meta-llama/LLaMA-3-7b"  # Replace with your local model name
+model = AutoModelForCausalLM.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+def local_model_inference(prompt, temperature=0.6):
+    inputs = tokenizer(prompt, return_tensors="pt")
+    outputs = model.generate(**inputs, max_new_tokens=512, top_p=0.9, temperature=temperature)
+    return tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+# Replace the generate function in your script with local_model_inference
+def generate(prompt, temperature=0.6):
+    return local_model_inference(prompt, temperature)
 
 # In[6]:
 
@@ -63,16 +78,6 @@ def transform_input(prompt: str, temperature) -> bytes:
 def transform_output(output: bytes) -> str:
     response_json = json.loads(output['Body'].read().decode("utf-8"))
     return response_json[0]["generation"]["content"]
-
-def generate(prompt, temperature = 0.6):
-    response = sm_client.invoke_endpoint(
-        EndpointName=endpoint_name, 
-        CustomAttributes="accept_eula=true", 
-        ContentType="application/json",
-        Body=transform_input(prompt, temperature)
-    )
-    response_output = transform_output(response)
-    return response_output
 
 # ### Edit System Message
 

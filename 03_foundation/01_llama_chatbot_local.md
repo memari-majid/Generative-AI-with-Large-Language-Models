@@ -10,12 +10,12 @@ This document provides instructions and code to create a chatbot capable of reta
    pip install transformers torch
    ```
 
-2. **Download a Model**: Use a pre-trained model from Hugging Face's model hub. For local use, a smaller model like `distilgpt2` is recommended. Here is how you can download and set up the model:
+2. **Download a Model**: Use a pre-trained LLaMA model from Hugging Face's model hub. Here is how you can download and set up the model:
 
    ```python
    from transformers import AutoModelForCausalLM, AutoTokenizer
 
-   model_name = "distilgpt2"  # Smaller model for local use
+   model_name = "meta-llama/LLaMA-3-7b"  # Replace with the latest LLaMA model name
    model = AutoModelForCausalLM.from_pretrained(model_name)
    tokenizer = AutoTokenizer.from_pretrained(model_name)
    ```
@@ -24,13 +24,13 @@ This document provides instructions and code to create a chatbot capable of reta
 
 ### Local Model Inference
 
-Use a local model inference method to deploy a smaller model.
+Use a local model inference method to deploy a LLaMA model.
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 # Load your model and tokenizer
-model_name = "distilgpt2"  # Smaller model for local use
+model_name = "meta-llama/LLaMA-3-7b"  # Replace with the latest LLaMA model name
 model = AutoModelForCausalLM.from_pretrained(model_name)
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
