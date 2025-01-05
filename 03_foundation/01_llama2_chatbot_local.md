@@ -1,34 +1,32 @@
-#!/usr/bin/env python
-# coding: utf-8
+# Chatbot
 
-# # Chatbot
+This document provides instructions and code to create a chatbot capable of retaining conversation history using a local model.
 
-# This document provides instructions and code to create a chatbot capable of retaining conversation history using a local model.
+## Setup Instructions
 
-# ## Setup Instructions
+1. **Install Python Packages**: You need to install the `transformers` and `torch` libraries from Hugging Face. Use the following command:
 
-# 1. **Install Python Packages**: You need to install the `transformers` and `torch` libraries from Hugging Face. Use the following command:
-#    ```bash
-#    pip install transformers torch
-#    ```
+   ```bash
+   pip install transformers torch
+   ```
 
-# 2. **Download a Model**: Use a pre-trained model from Hugging Face's model hub. For local use, a smaller model like `distilgpt2` is recommended. Here is how you can download and set up the model:
-#    ```python
-#    from transformers import AutoModelForCausalLM, AutoTokenizer
+2. **Download a Model**: Use a pre-trained model from Hugging Face's model hub. For local use, a smaller model like `distilgpt2` is recommended. Here is how you can download and set up the model:
 
-#    model_name = "distilgpt2"  # Smaller model for local use
-#    model = AutoModelForCausalLM.from_pretrained(model_name)
-#    tokenizer = AutoTokenizer.from_pretrained(model_name)
-#    ```
+   ```python
+   from transformers import AutoModelForCausalLM, AutoTokenizer
 
-# ## Helper Functions
+   model_name = "distilgpt2"  # Smaller model for local use
+   model = AutoModelForCausalLM.from_pretrained(model_name)
+   tokenizer = AutoTokenizer.from_pretrained(model_name)
+   ```
 
-# ### Local Model Inference
-# Use a local model inference method to deploy a smaller model. 
+## Helper Functions
 
-# In[2]:
+### Local Model Inference
 
+Use a local model inference method to deploy a smaller model.
 
+```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 # Load your model and tokenizer
@@ -48,12 +46,11 @@ def local_model_inference(prompt, temperature=0.6):
     response = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
     return response
+```
 
-# ### Edit System Message
+### Edit System Message
 
-# In[3]:
-
-
+```python
 def prompt_with_system_message(prompt, system_message):
     prompt = f"""
     <s>[INST] <<SYS>>{system_message}<</SYS>>
@@ -62,14 +59,12 @@ def prompt_with_system_message(prompt, system_message):
     Agent:[/INST]
     """
     return prompt
+```
 
-# ### Include One-to-many Shot Learning
+### Include One-to-many Shot Learning
 
-# In[4]:
-
-
+```python
 def prompt_with_examples(prompt, system_message, examples=[]):
-    
     # Start with the initial part of the prompt with system message
     full_prompt = f"<s>[INST] <<SYS>>{system_message}<</SYS>>\n"
 
@@ -81,12 +76,11 @@ def prompt_with_examples(prompt, system_message, examples=[]):
     full_prompt += f"{prompt} [/INST]"
 
     return full_prompt
+```
 
-# ### LlamaChatbot Class
+### LlamaChatbot Class
 
-# In[5]:
-
-
+```python
 class LlamaChatbot:
     def __init__(self, system_message):
         self.system_message = system_message
@@ -107,34 +101,39 @@ class LlamaChatbot:
     def reset(self):
         # Clear conversation history
         self.conversation_history = []
+```
 
-# ## Example Usage
+## Example Usage
 
-# In[6]:
-
-
+```python
 system_message = """
 You are a friendly chatbot always eager to help and engage in meaningful conversation.
 """
 
 chatbot = LlamaChatbot(system_message)
 
-# In[7]:
-
-
 print(chatbot.chat("Hi, my name is Rock. Nice to meet you!"))
-
-# In[8]:
-
-
 print(chatbot.chat("Can you remind me what my name is?"))
-
-# In[9]:
-
 
 chatbot.reset()
 
-# In[10]:
+print(chatbot.chat("Can you remind me what my name is?"))
+```
 
+## Running the Script Locally
 
-print(chatbot.chat("Can you remind me what my name is?")) 
+1. **Ensure Python is Installed**: Make sure you have Python installed on your system. You can download it from [python.org](https://www.python.org/).
+
+2. **Install Required Libraries**: Open a terminal or command prompt and run the following command to install the necessary libraries:
+
+   ```bash
+   pip install transformers torch
+   ```
+
+3. **Run the Script**: Save the script to a file, for example, `chatbot.py`, and run it using Python:
+
+   ```bash
+   python chatbot.py
+   ```
+
+This will execute the script, and you should see the chatbot's responses printed in the terminal. Adjust the model and parameters as needed for your specific use case. 
