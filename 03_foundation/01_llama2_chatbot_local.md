@@ -3,16 +3,16 @@
 
 # # Chatbot
 
-# In this notebook you will begin to create chatbot functionality, creating an AI bot capable of retaining conversation history.
+# This document provides instructions and code to create a chatbot capable of retaining conversation history using a local model.
 
 # ## Setup Instructions
 
-# 1. **Install Python Packages**: You need to install the `transformers` and `torch` libraries from Hugging Face. You can do this using pip:
+# 1. **Install Python Packages**: You need to install the `transformers` and `torch` libraries from Hugging Face. Use the following command:
 #    ```bash
 #    pip install transformers torch
 #    ```
 
-# 2. **Download a Model**: You can use a pre-trained model from Hugging Face's model hub. For example, you can use a smaller version of the Llama model or any other model suitable for text generation. Here is an example of how to download a model:
+# 2. **Download a Model**: Use a pre-trained model from Hugging Face's model hub. For local use, a smaller model like `distilgpt2` is recommended. Here is how you can download and set up the model:
 #    ```python
 #    from transformers import AutoModelForCausalLM, AutoTokenizer
 
